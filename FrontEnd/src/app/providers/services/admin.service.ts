@@ -22,4 +22,8 @@ export class AdminService {
     return this._http.patch(`${this.commonUrl}updateProduct`, data)
   }
 
+  deleteProduct(id:any):Observable<any>{
+    return this._http.delete(`${this.commonUrl}deleteProduct`, {body: id})
+  }
+
 }

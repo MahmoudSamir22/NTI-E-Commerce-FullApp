@@ -12,6 +12,7 @@
             </ul>
             <div class="card-body">
                 <a routerLink="/editProduct/{{p._id}}" class="btn btn-primary">Edit</a>
+                <a class="btn btn-danger mx-3" (click)="deleteProduct(p._id, i)">delete</a>
             </div>
         </div>
     </div>

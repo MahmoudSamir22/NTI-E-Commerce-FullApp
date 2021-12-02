@@ -22,4 +22,16 @@ export class MyProductsComponent implements OnInit {
       () => {this.isLoaded=true}
     )
   }
+
+  deleteProduct(id:any, i:number){
+    this._admin.deleteProduct({id}).subscribe(
+      (res)=>{console.log(res);
+      },
+      (err)=>{console.log(err);
+      },
+      ()=>{
+        this.myProducts.splice(i, 1)
+      }
+    )
+  }
 }

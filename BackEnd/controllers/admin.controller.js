@@ -85,7 +85,7 @@ class Admin{
 
     static deleteProduct = async (req, res) => {
         try {
-            const product = await productModel.findOneAndDelete({_id: req.body.id, owner: req.user._id} , req.body)
+            const product = await productModel.findOneAndDelete({_id: req.body.id, owner: req.user._id})
             if(!product) throw new Error('Product not found')
             res.status(200).send({
                 apiStatus: true,
