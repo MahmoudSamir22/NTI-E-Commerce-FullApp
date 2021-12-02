@@ -1,0 +1,14 @@
+<section class="container">
+    <div class="alert alert-danger my-3" *ngIf="wrongeData">
+        Please Check Your Login Data
+    </div>
+    <form class="my-4"  [formGroup]="myForm" (ngSubmit)="login()">
+        <div class="mb-3">
+            <input class="form-control" type="email" placeholder="Enter Your Email" formControlName='email'>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" type="password" placeholder="Enter Your Password" formControlName='password'>
+        </div>
+        <button class="btn btn-primary">Login</button>
+    </form> 
+</section>

@@ -1,0 +1,15 @@
+<section class="container">
+    <div class="row">
+        <div *ngIf="(loaded)">
+            <div class="card col-md-6">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Book.svg/1200px-Book.svg.png" class="card-img-top" >
+                <div class="card-body">
+                    <h2 class="card-title">{{product.title}}</h2>
+                    <p class="card-text">{{product.description}}</p>
+                    <p>Quantity: {{product.quantity}}</p>
+                </div>
+            </div>
+        </div>
+            <h1 class="alert alert-danger" *ngIf="notFound">Product Not Found</h1>
+    </div>
+</section>

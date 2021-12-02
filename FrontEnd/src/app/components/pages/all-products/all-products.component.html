@@ -1,0 +1,24 @@
+<section class="container my-3">
+    <div class="row" *ngIf="isLoaded">
+        <div *ngFor="let p of allProducts; let i=index" class="card col-3 mx-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Book.svg/1200px-Book.svg.png" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{p.title}}</h5>
+                <p class="card-text">{{p.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Avilable: {{p.quantity}}</li>
+                    <li class="list-group-item">
+                        <input class="form-control" type="number"  min="1" max="{{p.quantity}}" [(ngModel)]="q[i]">
+                    </li>
+            </ul>
+            <div class="card-body">
+                <a routerLink="/single/{{p._id}}" class="btn btn-primary">Show</a>
+                <span *ngIf="this._global.isAuthed &&this._global.userData.role!='Admin'">
+                    <a class="card-link btn btn-success mx-1" (click)="addToCart(p._id, p.owner, q[i])">Add to Cart</a>
+                    <a class="card-link btn btn-warning my-1" (click)="addToWishList(p._id, p.owner)">Add to WishList</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</section>

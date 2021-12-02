@@ -1,0 +1,89 @@
+<section class="container my-5">
+    <form [formGroup]="myForm" >
+        <div class="mb-3">
+            <label for="Name" class="form-label">First Name</label>
+            <input type="text" class="form-control" name="fname"  formControlName="fname" required minlength="3" maxlength="20" placeholder="First Name">
+            <div class="alert alert-danger my-2" *ngIf="fname?.invalid && (fname?.touched || fname?.dirty || isSubmitted)">
+                <div *ngIf="fname?.errors?.['required']">First Name is Required</div>
+                <div *ngIf="fname?.errors?.['minlength']">Name is 3 letters atleast</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="lname"  formControlName="lname" required minlength="3" maxlength="20" placeholder="Last Name">
+            <div class="alert alert-danger my-2" *ngIf="lname?.invalid && (lname?.touched || lname?.dirty || isSubmitted)">
+                <div *ngIf="lname?.errors?.['required']">Last Name is Required</div>
+                <div *ngIf="lname?.errors?.['minlength']">Name is 3 letters atleast</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email"  formControlName="email" required email placeholder="Email">
+            <div class="alert alert-danger my-2" *ngIf="email?.invalid && (email?.touched || email?.dirty || isSubmitted)">
+                <div *ngIf="email?.errors?.['required']">Email is Required</div>
+                <div *ngIf="email?.errors?.['email']">Enter a valid email</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password"  required formControlName="password" minlength="6" maxlength="14" placeholder="Password" 
+            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$">
+            <div class="alert alert-danger my-2" *ngIf="password?.invalid && (password?.dirty || isSubmitted)">
+                <div *ngIf="password?.errors?.['required']">Password is Required</div>
+                <div *ngIf="password?.errors?.['minlength']">Minlength is 6 letters</div>
+                <div *ngIf="password?.errors?.['pattern']"> Wronge Pattern</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" name="phone" formControlName="phone" placeholder="Phone">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="registerUser()">Submit As User</button>
+        <button type="submit" class="btn btn-primary mx-5" (click)="registerAdmin()">Submit As Admin</button>
+    </form>
+</section>
+
+
+<!-- <section class="container my-5">
+    <form #userData = "ngForm" (ngSubmit)="register(userData)">
+        <div class="mb-3">
+            <label for="Name" class="form-label">First Name</label>
+            <input type="text" class="form-control" name="fname" ngModel #fname = "ngModel" required minlength="3" maxlength="20" placeholder="First Name">
+            <div class="alert alert-danger my-2" *ngIf="fname.invalid && (fname.touched || fname.dirty || userData.submitted)">
+                <div *ngIf="fname.errors?.['required']">First Name is Required</div>
+                <div *ngIf="fname.errors?.['minlength']">Name is 3 letters atleast</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="lname" ngModel #lname = "ngModel" required minlength="3" maxlength="20" placeholder="Last Name">
+            <div class="alert alert-danger my-2" *ngIf="lname.invalid && (lname.touched || lname.dirty || userData.submitted)">
+                <div *ngIf="lname.errors?.['required']">Last Name is Required</div>
+                <div *ngIf="lname.errors?.['minlength']">Name is 3 letters atleast</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" ngModel #email = 'ngModel' required email placeholder="Email">
+            <div class="alert alert-danger my-2" *ngIf="email.invalid && (email.touched || email.dirty || userData.submitted)">
+                <div *ngIf="email.errors?.['required']">Email is Required</div>
+                <div *ngIf="email.errors?.['email']">Enter a valid email</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" ngModel required #password = "ngModel" minlength="6" maxlength="14" placeholder="Password" 
+            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$">
+            <div class="alert alert-danger my-2" *ngIf="password.invalid && (password.dirty || userData.submitted)">
+                <div *ngIf="password.errors?.['required']">Password is Required</div>
+                <div *ngIf="password.errors?.['minlength']">Minlength is 6 letters</div>
+                <div *ngIf="password.errors?.['pattern']"> Wronge Pattern</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" name="phone" ngModel placeholder="Phone">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</section> -->

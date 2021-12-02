@@ -1,0 +1,36 @@
+<section class="container my-5">
+    <form [formGroup]="editForm" (ngSubmit)="editUser()" >
+        <div class="mb-3">
+            <label for="Name" class="form-label">First Name</label>
+            <input type="text" class="form-control" name="fname"  formControlName="fname"
+             required minlength="3" maxlength="20" placeholder="First Name">
+            <div class="alert alert-danger my-2" *ngIf="fname?.invalid && (fname?.touched || fname?.dirty || isSubmitted)">
+                <div *ngIf="fname?.errors?.['required']">First Name is Required</div>
+                <div *ngIf="fname?.errors?.['minlength']">Name is 3 letters atleast</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="lname"  formControlName="lname" 
+            required minlength="3" maxlength="20" placeholder="Last Name">
+            <div class="alert alert-danger my-2" *ngIf="lname?.invalid && (lname?.touched || lname?.dirty || isSubmitted)">
+                <div *ngIf="lname?.errors?.['required']">Last Name is Required</div>
+                <div *ngIf="lname?.errors?.['minlength']">Name is 3 letters atleast</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email"  formControlName="email"
+             required email placeholder="Email">
+            <div class="alert alert-danger my-2" *ngIf="email?.invalid && (email?.touched || email?.dirty || isSubmitted)">
+                <div *ngIf="email?.errors?.['required']">Email is Required</div>
+                <div *ngIf="email?.errors?.['email']">Enter a valid email</div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="Phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" name="phone" formControlName="phone" placeholder="Phone">
+        </div>
+        <button type="submit" class="btn btn-success">Edit</button>
+    </form>
+</section>

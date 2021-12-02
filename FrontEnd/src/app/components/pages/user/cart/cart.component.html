@@ -1,0 +1,34 @@
+<section class="container my-5">
+    <div *ngIf="isLoaded">
+        <h1 class="text-center">Cart</h1>
+        <table class="table table-dark table-striped text-center align-middle">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>description</th>
+                    <th>quantity</th>
+                    <th>Actions</th>
+                </tr>
+                
+            </thead>
+                <tbody >
+                    <tr *ngFor="let p of cart; let i=index">
+                        <td>{{p.item.title}}</td>
+                        <td>{{p.item.description}}</td>
+                        <td>{{p.quantity}}</td>
+                        <td>
+                            <a class="btn btn-danger mx-3" (click)="deleteCartItem(p.itemCartId, i)">Delete</a>
+                        </td>
+                    </tr>
+                    <tr *ngIf="cart.length==0" >
+                        <td class="table-danger text-center" colspan="4">No Items in the Cart</td>
+                    </tr>
+                </tbody>
+        </table>
+        <div *ngIf="cart.length!=0">
+            <a  class="btn btn-danger mx-3" (click)="clearCart()">Clear Cart</a>
+            <a  class="btn btn-success mx-3" (click)="postOrder()">Post Order</a>
+        </div>
+        
+    </div>
+</section>

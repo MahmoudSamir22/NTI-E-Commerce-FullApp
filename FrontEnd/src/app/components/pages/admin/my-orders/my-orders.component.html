@@ -1,0 +1,31 @@
+{{myOrders | json}}
+
+<section class="container my-5" *ngIf="isLoaded">
+    <h1 class="text-center">Orders</h1>
+    <table class="table table-dark table-striped text-center align-middle">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            
+        </thead>
+        <tbody *ngFor="let o of newOrders; let i=index">
+                <tr>
+                    <td colspan="3">Order Number {{i+1}}</td>
+                    <td><a class="btn btn-danger">Delete</a></td>
+                </tr>
+                <tr *ngFor="let c of o.orderContent;" class="table-success">
+                            <td>{{c.title}}</td>
+                            <td>{{c.quantity}}</td>    
+                            <td>{{c.description}}</td>
+                            <td></td>
+                </tr>
+        </tbody>
+        <tr *ngIf="newOrders.length==0" >
+            <td class="table-danger text-center" colspan="4">No Orders Right Now</td>
+        </tr>
+    </table>
+</section>

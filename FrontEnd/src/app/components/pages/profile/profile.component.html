@@ -1,0 +1,7 @@
+<section class="container">
+    <h1>{{user.fname}} {{user.lname}}</h1>
+    <h2>{{user.email}}</h2>
+    <h3>{{user.phone}}</h3>
+    <a routerLink="/edit" class="btn btn-primary ">Edit User</a>
+    <a (click)="deleteUser()" class="btn btn-danger mx-5">Delete My Account</a>
+</section>

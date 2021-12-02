@@ -1,0 +1,28 @@
+<section class="container my-5">
+    <div *ngIf="isLoaded">
+        <h1 class="text-center">WishList</h1>
+        <table class="table table-dark table-striped text-center align-middle">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>description</th>
+                    <th>Actions</th>
+                </tr>
+                
+            </thead>
+                <tbody >
+                    <tr *ngFor="let p of wishList; let i=index">
+                        <td>{{p.item.title}}</td>
+                        <td>{{p.item.description}}</td>
+                        <td>
+                            <a class="btn btn-danger mx-3" (click)="deleteWishListItem(p.itemWishlistId, i)">Delete</a>
+                        </td>
+                    </tr>
+                    <tr *ngIf="wishList.length==0" >
+                        <td class="table-danger text-center" colspan="4">No Items in the wishList</td>
+                    </tr>
+                </tbody>
+        </table>
+        <a *ngIf="wishList.length!=0" class="btn btn-danger" (click)="clearWishList()">Clear WishList</a>
+    </div>
+</section>
